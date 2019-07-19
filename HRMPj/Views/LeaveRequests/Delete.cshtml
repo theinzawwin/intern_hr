@@ -1,0 +1,88 @@
+﻿@model HRMPj.Models.LeaveRequest
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LeaveRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentYear)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentYear)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveFromDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeaveFromDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveToDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeaveToDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveTotalDay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeaveTotalDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HalfDay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HalfDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HalfStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HalfStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UnPaidLeaveStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UnPaidLeaveStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PayRollStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PayRollStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeaveType.Id)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

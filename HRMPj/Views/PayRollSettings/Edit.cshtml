@@ -1,0 +1,99 @@
+﻿@model HRMPj.Models.PayRollSetting
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>PayRollSetting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="OT" /> @Html.DisplayNameFor(model => model.OT)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Bonus" /> @Html.DisplayNameFor(model => model.Bonus)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="LateDebuct" /> @Html.DisplayNameFor(model => model.LateDebuct)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tax" class="control-label"></label>
+                <input asp-for="Tax" class="form-control" />
+                <span asp-validation-for="Tax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Allowance" /> @Html.DisplayNameFor(model => model.Allowance)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Saving" /> @Html.DisplayNameFor(model => model.Saving)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Claim" /> @Html.DisplayNameFor(model => model.Claim)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="BasicSalary" class="control-label"></label>
+                <input asp-for="BasicSalary" class="form-control" />
+                <span asp-validation-for="BasicSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Loan" /> @Html.DisplayNameFor(model => model.Loan)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="SavingPerMonth" class="control-label"></label>
+                <input asp-for="SavingPerMonth" class="form-control" />
+                <span asp-validation-for="SavingPerMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeInfoId" class="control-label"></label>
+                <select asp-for="EmployeeInfoId" class="form-control" asp-items="ViewBag.EmployeeInfoId"></select>
+                <span asp-validation-for="EmployeeInfoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

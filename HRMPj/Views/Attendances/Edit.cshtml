@@ -1,0 +1,80 @@
+﻿@model HRMPj.Models.Attendance
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Attendance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="AttendanceDate" class="control-label"></label>
+                <input asp-for="AttendanceDate" class="form-control" />
+                <span asp-validation-for="AttendanceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InTime" class="control-label"></label>
+                <input asp-for="InTime" class="form-control" />
+                <span asp-validation-for="InTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutTime" class="control-label"></label>
+                <input asp-for="OutTime" class="form-control" />
+                <span asp-validation-for="OutTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EarlyInTime" class="control-label"></label>
+                <input asp-for="EarlyInTime" class="form-control" />
+                <span asp-validation-for="EarlyInTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EarlyOutTime" class="control-label"></label>
+                <input asp-for="EarlyOutTime" class="form-control" />
+                <span asp-validation-for="EarlyOutTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LateInTime" class="control-label"></label>
+                <input asp-for="LateInTime" class="form-control" />
+                <span asp-validation-for="LateInTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LateOutTime" class="control-label"></label>
+                <input asp-for="LateOutTime" class="form-control" />
+                <span asp-validation-for="LateOutTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeInfoId" class="control-label"></label>
+                <select asp-for="EmployeeInfoId" class="form-control" asp-items="ViewBag.EmployeeInfoId"></select>
+                <span asp-validation-for="EmployeeInfoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
