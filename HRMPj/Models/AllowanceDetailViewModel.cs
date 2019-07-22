@@ -9,7 +9,7 @@ namespace HRMPj.Models
     {
         public long Id { get; set; }
         public string Month { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
        
         public long AllowanceTypeId { get; set; }
         

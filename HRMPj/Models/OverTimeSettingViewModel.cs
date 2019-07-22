@@ -9,9 +9,7 @@ namespace HRMPj.Models
     {
         public long Id { get; set; }
         public float Amount { get; set; }
-        public decimal Limit { get; set; }
-        public decimal MaxRange { get; set; }
-        public decimal MinRange { get; set; }
+        public decimal Hour { get; set; }
         public string Remark { get; set; }
         public DateTime CreatedDate { get; set; }
     }

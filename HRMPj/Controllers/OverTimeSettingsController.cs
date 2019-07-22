@@ -70,9 +70,7 @@ namespace HRMPj.Controllers
                 OverTimeSetting ov = new OverTimeSetting()
                 {
                     Amount = overTimeSetting.Amount,
-                    Limit = overTimeSetting.Limit,
-                    MaxRange = overTimeSetting.MaxRange,
-                    MinRange = overTimeSetting.MinRange,
+                    Hour = overTimeSetting.Hour,
                     Remark = overTimeSetting.Remark,
                     CreatedDate = overTimeSetting.CreatedDate
                 };

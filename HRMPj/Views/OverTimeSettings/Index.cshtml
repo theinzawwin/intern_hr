@@ -24,7 +24,7 @@
 </div>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="mb-2 mr-2 btn-icon btn-pill btn btn-primary">Create New</a>
 </p>
 <div class="main-card mb-3 card">
     <div class="card-body">
@@ -39,14 +39,9 @@
                                     @Html.DisplayNameFor(model => model.Amount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Limit)
+                                    @Html.DisplayNameFor(model => model.Hour)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.MaxRange)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.MinRange)
-                                </th>
+                               
                                 <th>
                                     @Html.DisplayNameFor(model => model.Remark)
                                 </th>
@@ -64,14 +59,9 @@
                                         @Html.DisplayFor(modelItem => item.Amount)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Limit)
+                                        @Html.DisplayFor(modelItem => item.Hour)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.MaxRange)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.MinRange)
-                                    </td>
+                                    
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Remark)
                                     </td>
@@ -79,9 +69,9 @@
                                         @Html.DisplayFor(modelItem => item.CreatedDate)
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x btn btn-outline-primary">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x btn btn-outline-primary">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x btn btn-outline-primary">Delete</a>
                                     </td>
                                 </tr>
                             }

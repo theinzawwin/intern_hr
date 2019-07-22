@@ -5,93 +5,113 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
-<h4>PayRollSetting</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="OT" /> @Html.DisplayNameFor(model => model.OT)
-                    </label>
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="pe-7s-graph text-success">
+                </i>
+            </div>
+            <div>
+               PayRollSetting
+                <div class="page-title-subheading">
+                    Build whatever layout you need with our Architect framework.
                 </div>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Bonus" /> @Html.DisplayNameFor(model => model.Bonus)
-                    </label>
+        </div>
+    </div>
+</div>
+<h2 class="nav-link active">Create</h2>
+<div class="tab-content">
+    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+        <div class="main-card mb-3 card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>                           
+                                <div class="position-relative form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="OT" /> @Html.DisplayNameFor(model => model.OT)
+                                        </label>
+                                    </div>
+                                </div>                                
+                                <div class="position-relative form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="Bonus" /> @Html.DisplayNameFor(model => model.Bonus)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="LateDebuct" /> @Html.DisplayNameFor(model => model.LateDebuct)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <label asp-for="Tax" class="control-label"></label>
+                                    <input asp-for="Tax" class="form-control" />
+                                    <span asp-validation-for="Tax" class="text-danger"></span>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="Allowance" /> @Html.DisplayNameFor(model => model.Allowance)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="Saving" /> @Html.DisplayNameFor(model => model.Saving)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="Claim" /> @Html.DisplayNameFor(model => model.Claim)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <label asp-for="BasicSalary" class="control-label"></label>
+                                    <input asp-for="BasicSalary" class="form-control" />
+                                    <span asp-validation-for="BasicSalary" class="text-danger"></span>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input asp-for="Loan" /> @Html.DisplayNameFor(model => model.Loan)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <label asp-for="SavingPerMonth" class="control-label"></label>
+                                    <input asp-for="SavingPerMonth" class="form-control" />
+                                    <span asp-validation-for="SavingPerMonth" class="text-danger"></span>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <label asp-for="EmployeeInfoId" class="control-label"></label>
+                                    <select asp-for="EmployeeInfoId" class="form-control" asp-items="ViewBag.EmployeeInfoId"></select>
+                                </div>
+                                <div class="position-relative form-group">
+                                    <input type="submit" value="Create" class="mb-2 mr-2 btn-icon btn-pill btn btn-outline-primary" />
+                                    <a asp-action="Index" class="mb-2 mr-2 btn-icon btn-pill btn btn-outline-primary">Back to List</a>
+                                </div>
+</form>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="LateDebuct" /> @Html.DisplayNameFor(model => model.LateDebuct)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tax" class="control-label"></label>
-                <input asp-for="Tax" class="form-control" />
-                <span asp-validation-for="Tax" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Allowance" /> @Html.DisplayNameFor(model => model.Allowance)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Saving" /> @Html.DisplayNameFor(model => model.Saving)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Claim" /> @Html.DisplayNameFor(model => model.Claim)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="BasicSalary" class="control-label"></label>
-                <input asp-for="BasicSalary" class="form-control" />
-                <span asp-validation-for="BasicSalary" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Loan" /> @Html.DisplayNameFor(model => model.Loan)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="SavingPerMonth" class="control-label"></label>
-                <input asp-for="SavingPerMonth" class="form-control" />
-                <span asp-validation-for="SavingPerMonth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmployeeInfoId" class="control-label"></label>
-                <select asp-for="EmployeeInfoId" class ="form-control" asp-items="ViewBag.EmployeeInfoId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+             
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+     }

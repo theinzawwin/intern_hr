@@ -17,10 +17,48 @@ namespace HRMPj.Repository
             this.context = _context;
         }
 
-        public List<EmployeeInfo> GetCreate()
+        public async Task Delete(EmployeeInfo ot)
         {
-            List<EmployeeInfo> emp = context.EmployeeInfos.Include(e => e.Branch).Include(e => e.Department).Include(e => e.Designation).ToList();
-            return emp;
+            context.Remove(ot);
+            await context.SaveChangesAsync();
+        }
+
+        public List<EmployeeInfo> GetDelete()
+        {
+            List<EmployeeInfo> a = context.EmployeeInfos.Include(e => e.Branch).Include(e => e.Department).Include(e => e.Designation).ToList();
+            return a;
+        }
+
+        public EmployeeInfo GetDeleteList(long id)
+        {
+            try
+            {
+                var com = context.EmployeeInfos.Find(id);
+                return com;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<EmployeeInfo> GetDetail()
+        {
+            List<EmployeeInfo> a = context.EmployeeInfos.Include(e => e.Branch).Include(e => e.Department).Include(e => e.Designation).ToList();
+            return a;
+        }
+
+        public EmployeeInfo GetEdit(long? id)
+        {
+            try
+            {
+                var com = context.EmployeeInfos.Find(id);
+                return com;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<EmployeeInfo> GetEmployeeInfoList()
@@ -29,10 +67,22 @@ namespace HRMPj.Repository
             return bb;
         }
 
-        public async Task Save(EmployeeInfo b)
+        public bool GetExit(long id)
         {
-            context.Add(b);
+            var dd = context.EmployeeInfos.Any(e => e.Id == id);
+            return dd;
+        }
+
+        public async Task Save(EmployeeInfo ot)
+        {
+            context.Add(ot);
             await context.SaveChangesAsync();
-         }
+        }
+
+        public async Task Update(EmployeeInfo ot)
+        {
+            context.Update(ot);
+            await context.SaveChangesAsync();
+        }
     }
 }

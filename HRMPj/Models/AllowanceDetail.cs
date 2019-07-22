@@ -13,7 +13,7 @@ namespace HRMPj.Models
         [Key]
         public long Id { get; set; }
         public string Month { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
         [ForeignKey("AllowanceTypeId")]
         public long AllowanceTypeId { get; set; }
         public virtual AllowanceType AllowanceType { get; set; }

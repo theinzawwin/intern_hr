@@ -34,7 +34,7 @@ namespace HRMPj.Controllers
         public IActionResult Index()
         {
            // var applicationDbContext = _context.EmployeeLeaveInfos.Include(e => e.EmployeeInfo).Include(e => e.LeaveType);
-            return View(employeeLeaveInfoRepository.GeEmployeeLeaveList());
+            return View(employeeLeaveInfoRepository.GetDetail());
         }
 
         // GET: EmployeeLeaveInfoes/Details/5

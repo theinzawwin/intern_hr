@@ -43,7 +43,7 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-row">
                         <div class=" col-md-6">
-                            <div class="form-group">
+                            <div class="position-relative form-group">
                                 <label asp-for="EmployeeName" class="">EmployeeName</label>
                                 <input asp-for="EmployeeName" id="EmployeeName" placeholder="Enter name" type="text" class="form-control" />
                             </div>
@@ -56,10 +56,14 @@
                         </div>
                     </div>
                     <div class="position-relative form-group">
-                        <label asp-for="Gender" class="">Gender</label>
-                        @*<input asp-for="Gender" class="form-control" />*@
-                        <input type="radio" asp-for="Gender" value="Male" />Male
-                        <input type="radio" asp-for="Gender" value="Female" />Female
+                        <label asp-for="Gender" class="">Gender</label><br />
+                        @*<input type="radio" asp-for="Gender" value="Male" />Male
+            <input type="radio" asp-for="Gender" value="Female" />Female*@
+                        <select asp-for="Gender" class="form-control">
+
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6">
@@ -171,6 +175,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="position-relative form-group">
                         <div class="checkbox">
                             <label>

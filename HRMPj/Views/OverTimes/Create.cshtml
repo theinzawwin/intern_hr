@@ -1,72 +1,113 @@
 ﻿@model HRMPj.Models.OverTime
 
 @{
-    ViewData["Title"] = "Create";
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Create</h2>
-
-<h4>OverTime</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="OTDate" class="control-label"></label>
-                <input asp-for="OTDate" class="form-control" />
-                <span asp-validation-for="OTDate" class="text-danger"></span>
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="pe-7s-graph text-success">
+                </i>
             </div>
-            <div class="form-group">
-                <label asp-for="OTStartTime" class="control-label"></label>
-                <input asp-for="OTStartTime" class="form-control" />
-                <span asp-validation-for="OTStartTime" class="text-danger"></span>
+            <div>
+                OverTime
+                <div class="page-title-subheading">
+                    Build whatever layout you need with our Architect framework.
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OTEndTime" class="control-label"></label>
-                <input asp-for="OTEndTime" class="form-control" />
-                <span asp-validation-for="OTEndTime" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+@*<ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+    <li class="nav-item">
+        <a role="tab" class="nav-link" id="tab-0" data-toggle="tab" href="#tab-content-0" aria-selected="false">
+            <span>Create</span>
+        </a>
+    </li>*@
+<ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+    <li class="nav-item">
+        <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="https://demo.dashboardpack.com/architectui-html-pro/elements-buttons-icons.html#tab-content-0">
+            <span>Create</span>
+        </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+        <div class="main-card mb-3 card">
+            <div class="card-body">
+                <h5 class="card-title">Create</h5>
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="position-relative form-group">
+                        <label asp-for="OTDate" class="">OTDate</label>
+                        <input asp-for="OTDate" id="OTDate" placeholder="Enter date" type="text" class="form-control" />
+                        <span asp-validation-for="OTDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label asp-for="OTStartTime" class="">OTStartTime</label>
+                                <input asp-for="OTStartTime" id="OTStartTime" placeholder="Enter time" type="text" class="form-control" />
+                                <span asp-validation-for="OTStartTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label asp-for="OTEndTime" class="">OTEndTime</label>
+                                <input asp-for="OTEndTime" id="OTEndTime" placeholder="Enter time" type="text" class="form-control" />
+                                <span asp-validation-for="OTEndTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label asp-for="Status" class="">Status</label>
+                        <textarea asp-for="Status" id="Status" placeholder="Enter status" type="text" class="form-control" ></textarea>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label asp-for="ApprovedDate" class="">ApprovedDate</label>
+                        <input asp-for="ApprovedDate" id="ApprovedDate" placeholder="Enter date" type="text" class="form-control" />
+                        <span asp-validation-for="ApprovedDate" class="text-danger"></span>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label asp-for="OTTime" class="">OTTime</label>
+                        <input asp-for="OTTime" id="OTTime" placeholder="Enter time" type="text" class="form-control" />
+                        <span asp-validation-for="OTTime" class="text-danger"></span>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label asp-for="Year" class="">Year</label>
+                        <input asp-for="Year" id="Year" placeholder="Enter year" type="text" class="form-control" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label asp-for="FromEmployeeInfoId" class="">FromEmployeeInfoId</label>
+                                <select asp-for="FromEmployeeInfoId" id="FromEmployeeInfoId" class="form-control" asp-items="ViewBag.FromEmployeeInfoId"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label asp-for="ToEmployeeInfoId" class="">ToEmployeeInfoId</label>
+                                <select asp-for="ToEmployeeInfoId" id="ToEmployeeInfoId" class="form-control" asp-items="ViewBag.ToEmployeeInfoId"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="mb-2 mr-2 btn-icon btn-pill btn btn-outline-primary" />
+                        <a asp-action="Index" class="mb-2 mr-2 btn-icon btn-pill btn btn-outline-primary">Back to List</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ApprovedDate" class="control-label"></label>
-                <input asp-for="ApprovedDate" class="form-control" />
-                <span asp-validation-for="ApprovedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OTTime" class="control-label"></label>
-                <input asp-for="OTTime" class="form-control" />
-                <span asp-validation-for="OTTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
-                <span asp-validation-for="Year" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FromEmployeeInfoId" class="control-label"></label>
-                <select asp-for="FromEmployeeInfoId" class ="form-control" asp-items="ViewBag.FromEmployeeInfoId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ToEmployeeInfoId" class="control-label"></label>
-                <select asp-for="ToEmployeeInfoId" class ="form-control" asp-items="ViewBag.ToEmployeeInfoId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+      >
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

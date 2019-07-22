@@ -13,6 +13,7 @@ namespace HRMPj.Models
         [Key]
         public long Id { get; set; }
         public string CompanyName { get; set; }
+        [DataType(DataType.Date)]
         public DateTime CreatedDate { get; set; }
         public ICollection<Branch> Branch { get; set; }
 

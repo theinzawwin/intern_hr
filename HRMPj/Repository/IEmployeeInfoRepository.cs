@@ -8,8 +8,15 @@ namespace HRMPj.Repository
 {
    public interface IEmployeeInfoRepository
     {
-        Task Save(EmployeeInfo b);
-        List<EmployeeInfo> GetCreate();
+        Task Save(EmployeeInfo ot);
+        Task Update(EmployeeInfo ot);
+        Task Delete(EmployeeInfo ot);
         List<EmployeeInfo> GetEmployeeInfoList();
+        List<EmployeeInfo> GetDetail();
+        EmployeeInfo GetEdit(long? id);
+        List<EmployeeInfo> GetDelete();
+        EmployeeInfo GetDeleteList(long id);
+        bool GetExit(long id);
+
     }
 }

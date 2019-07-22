@@ -9,6 +9,8 @@
 
         <link rel="stylesheet" href="~/css/main.css" />
         <link rel="stylesheet" href="~/scss/style.css" />
+        <link href="~/js/dcalendar.picker.css" rel="stylesheet" />
+        <link href="~/lib/jquery/fullclander/fullcalendar.css" rel="stylesheet" />
     </environment>
 </head>
 <body>
@@ -32,50 +34,58 @@
 
     
 
-        <environment include="Development">
-            <script src="~/js/jquery-3.3.1.js"></script>
-            <script src="~/js/main.js"></script>
-            <script src="~/js/dataTable/jquery.dataTables.min.js"></script>
-            <script src="~/js/dataTable/dataTables.buttons.min.js"></script>
-            <script src="~/js/dataTable/buttons.flash.min.js"></script>
-            <script src="~/js/dataTable/buttons.html5.min.js"></script>
-            <script src="~/js/dataTable/buttons.print.min.js"></script>
-            <script src="~/js/dataTable/buttons.colVis.min.js"></script>
-            <script src="~/js/dataTable/dataTables.select.min.js"></script>
-            <script src="~/js/dataTable/jszip.min.js"></script>
-            <script src="~/js/dataTable/pdfmake.min.js"></script>
-            <script src="~/js/dataTable/vfs_fonts.js"></script>
-            <script src="~/js/dataTable/dataTables.js"></script>
-            <script src="~/js/sweetalert.min.js"></script>
-            <script>
+    <environment include="Development">
+
+        <script src="~/js/jquery-3.3.1.js"></script>
+
+        <script src="~/lib/jquery/jquery-ui-1.8.23.custom.min.js"></script>
+        <script src="~/lib/jquery/fullclander/fullcalendar.min.js"></script>
+        <script src="~/js/main.js"></script>
+        <script src="~/js/dataTable/jquery.dataTables.min.js"></script>
+        <script src="~/js/dataTable/dataTables.buttons.min.js"></script>
+        <script src="~/js/dataTable/buttons.flash.min.js"></script>
+        <script src="~/js/dataTable/buttons.html5.min.js"></script>
+        <script src="~/js/dataTable/buttons.print.min.js"></script>
+        <script src="~/js/dataTable/buttons.colVis.min.js"></script>
+        <script src="~/js/dataTable/dataTables.select.min.js"></script>
+        <script src="~/js/dataTable/jszip.min.js"></script>
+        <script src="~/js/dataTable/pdfmake.min.js"></script>
+        <script src="~/js/dataTable/vfs_fonts.js"></script>
+        <script src="~/js/dataTable/dataTables.js"></script>
+        <script src="~/js/sweetalert.min.js"></script>
+        @*<script src="~/js/dcalendar.picker.js"></script>*@
+
+        @*<script src="~/lib/jquery/jquery-1.8.1.min.js"></script>*@
+
+        <script>
 
 
-                function toggleFullScreen() {
-                    if (!document.fullscreenElement && // alternative standard method
-                        !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) { // current working methods
-                        if (document.documentElement.requestFullscreen) {
-                            document.documentElement.requestFullscreen();
-                        } else if (document.documentElement.msRequestFullscreen) {
-                            document.documentElement.msRequestFullscreen();
-                        } else if (document.documentElement.mozRequestFullScreen) {
-                            document.documentElement.mozRequestFullScreen();
-                        } else if (document.documentElement.webkitRequestFullscreen) {
-                            document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-                        }
-                    } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen();
-                        } else if (document.msExitFullscreen) {
-                            document.msExitFullscreen();
-                        } else if (document.mozCancelFullScreen) {
-                            document.mozCancelFullScreen();
-                        } else if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        }
+            function toggleFullScreen() {
+                if (!document.fullscreenElement && // alternative standard method
+                    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) { // current working methods
+                    if (document.documentElement.requestFullscreen) {
+                        document.documentElement.requestFullscreen();
+                    } else if (document.documentElement.msRequestFullscreen) {
+                        document.documentElement.msRequestFullscreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                        document.documentElement.mozRequestFullScreen();
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                        document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
                     }
                 }
-            </script>
-        </environment>
+            }
+        </script>
+    </environment>
         @RenderSection("Scripts", required: false)
 
     

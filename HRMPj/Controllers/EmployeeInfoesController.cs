@@ -36,8 +36,8 @@ namespace HRMPj.Controllers
         // GET: EmployeeInfoes
         public IActionResult Index()
         {
-           // var applicationDbContext = _context.EmployeeInfos.Include(e => e.Branch).Include(e => e.Department).Include(e => e.Designation);
-            return View(employeeInfoRepository.GetCreate());
+           // var applicationDbContext = _conext.EcontmployeeInfos.Include(e => e.Branch).Include(e => e.Department).Include(e => e.Designation);
+            return View(employeeInfoRepository.GetDetail());
         }
 
         // GET: EmployeeInfoes/Details/5
@@ -143,97 +143,100 @@ namespace HRMPj.Controllers
         }
 
         // GET: EmployeeInfoes/Edit/5
-        //public async Task<IActionResult> Edit(long? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public IActionResult Edit(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var employeeInfo = await _context.EmployeeInfos.FindAsync(id);
-        //    if (employeeInfo == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id", employeeInfo.BranchId);
-        //    ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Id", employeeInfo.DepartmentId);
-        //    ViewData["DesignationId"] = new SelectList(_context.Designations, "Id", "Id", employeeInfo.DesignationId);
-        //    return View(employeeInfo);
-        //}
+            // var employeeInfo = await _context.EmployeeInfos.FindAsync(id);
+            var employeeInfo = employeeInfoRepository.GetEdit(id);
+            if (employeeInfo == null)
+            {
+                return NotFound();
+            }
+            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "Id", employeeInfo.BranchId);
+            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Id", employeeInfo.DepartmentId);
+            ViewData["DesignationId"] = new SelectList(designationRepository.GetDesignationList(), "Id", "Id", employeeInfo.DesignationId);
+            return View(employeeInfo);
+        }
 
         //// POST: EmployeeInfoes/Edit/5
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(long id, [Bind("Id,EmployeeName,FatherName,Gender,NRC,Nationality,MartialStatus,DateOfBirth,MobilePhone,CurrentAddress,EmergencyNo,AccountNo,ATMNumber,IsActive,CreatedDate,CreatedBy,EmployeeProfile,BranchId,DepartmentId,DesignationId")] EmployeeInfo employeeInfo)
-        //{
-        //    if (id != employeeInfo.Id)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(long id, [Bind("Id,EmployeeName,FatherName,Gender,NRC,Nationality,MartialStatus,DateOfBirth,MobilePhone,CurrentAddress,EmergencyNo,AccountNo,ATMNumber,IsActive,CreatedDate,CreatedBy,EmployeeProfile,BranchId,DepartmentId,DesignationId")] EmployeeInfo employeeInfo)
+        {
+            if (id != employeeInfo.Id)
+            {
+                return NotFound();
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(employeeInfo);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!EmployeeInfoExists(employeeInfo.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["BranchId"] = new SelectList(_context.Branches, "Id", "Id", employeeInfo.BranchId);
-        //    ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Id", employeeInfo.DepartmentId);
-        //    ViewData["DesignationId"] = new SelectList(_context.Designations, "Id", "Id", employeeInfo.DesignationId);
-        //    return View(employeeInfo);
-        //}
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await employeeInfoRepository.Update(employeeInfo);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EmployeeInfoExists(employeeInfo.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "Id", employeeInfo.BranchId);
+            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Id", employeeInfo.DepartmentId);
+            ViewData["DesignationId"] = new SelectList(designationRepository.GetDesignationList(), "Id", "Id", employeeInfo.DesignationId);
+            return View(employeeInfo);
+        }
 
         //// GET: EmployeeInfoes/Delete/5
-        //public async Task<IActionResult> Delete(long? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Delete(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var employeeInfo = await _context.EmployeeInfos
-        //        .Include(e => e.Branch)
-        //        .Include(e => e.Department)
-        //        .Include(e => e.Designation)
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (employeeInfo == null)
-        //    {
-        //        return NotFound();
-        //    }
+            //var employeeInfo = await _context.EmployeeInfos
+            //    .Include(e => e.Branch)
+            //    .Include(e => e.Department)
+            //    .Include(e => e.Designation)
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+            var employeeInfo = employeeInfoRepository.GetDelete().FirstOrDefault(m => m.Id == id);
+            if (employeeInfo == null)
+            {
+                return NotFound();
+            }
 
-        //    return View(employeeInfo);
-        //}
+            return View(employeeInfo);
+        }
 
         //// POST: EmployeeInfoes/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(long id)
-        //{
-        //    var employeeInfo = await _context.EmployeeInfos.FindAsync(id);
-        //    _context.EmployeeInfos.Remove(employeeInfo);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(long id)
+        {
+            //var employeeInfo = await _context.EmployeeInfos.FindAsync(id);
+            //_context.EmployeeInfos.Remove(employeeInfo);
+            //await _context.SaveChangesAsync();
+            var employeeInfo = employeeInfoRepository.GetDeleteList(id);
+            await employeeInfoRepository.Delete(employeeInfo);
+            return RedirectToAction(nameof(Index));
+        }
 
-        //private bool EmployeeInfoExists(long id)
-        //{
-        //    return _context.EmployeeInfos.Any(e => e.Id == id);
-        //}
+        private bool EmployeeInfoExists(long id)
+        {
+            return employeeInfoRepository.GetExit(id) ;
+        }
     }
 }

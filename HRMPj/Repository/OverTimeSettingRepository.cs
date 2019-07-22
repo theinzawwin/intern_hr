@@ -70,7 +70,7 @@ namespace HRMPj.Repository
 
         public async Task<List<OverTimeSettingViewModel>> GetOverTimeSettingViewModelList()
         {
-            var comList = await(from c in context.OverTimeSettings select new OverTimeSettingViewModel() { Id = c.Id, Amount=c.Amount,Limit=c.Limit,MaxRange=c.MaxRange,MinRange=c.MinRange,Remark=c.Remark,CreatedDate=c.CreatedDate }).ToAsyncEnumerable<OverTimeSettingViewModel>().ToList();
+            var comList = await(from c in context.OverTimeSettings select new OverTimeSettingViewModel() { Id = c.Id, Amount=c.Amount,Hour=c.Hour,Remark=c.Remark,CreatedDate=c.CreatedDate }).ToAsyncEnumerable<OverTimeSettingViewModel>().ToList();
             return comList;
         }
 
