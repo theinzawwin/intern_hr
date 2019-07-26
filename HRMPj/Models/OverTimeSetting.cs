@@ -13,7 +13,7 @@ namespace HRMPj.Models
         [Key]
         public long Id { get; set; }
         public float Amount { get; set; }
-        public decimal Hour { get; set; }
+        public int Hour { get; set; }
         public string Remark { get; set; }
         public DateTime CreatedDate { get; set; }
     }

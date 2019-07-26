@@ -61,10 +61,10 @@
                                         @Html.DisplayFor(modelItem => item.Year)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.AllowanceType.Id)
+                                        @Html.DisplayFor(modelItem => item.AllowanceType.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Employee.Id)
+                                        @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x btn btn-outline-primary">Edit</a> |

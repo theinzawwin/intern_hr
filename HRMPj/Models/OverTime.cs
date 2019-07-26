@@ -13,11 +13,13 @@ namespace HRMPj.Models
         [Key]
         public long Id { get; set; }
         public DateTime OTDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:HH:mm tt}")]
         public DateTime OTStartTime { get; set; }
+        [DisplayFormat(DataFormatString = "{0:HH:mm tt}")]
         public DateTime OTEndTime { get; set; }
         public string Status { get; set; }
         public DateTime ApprovedDate { get; set; }
-        public int OTTime { get; set; }
+        public int OTTime { get; set; }  
         public int Year { get; set; }
         [ForeignKey("EmployeeInfoId")]
         public long FromEmployeeInfoId { get; set; }

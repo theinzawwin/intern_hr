@@ -53,9 +53,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.OTTime)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Year)
-                                </th>
+                              
                                 <th>
                                     @Html.DisplayNameFor(model => model.ToEmployeeInfo)
                                 </th>
@@ -87,14 +85,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.OTTime)
                                     </td>
+                                 
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Year)
+                                        @Html.DisplayFor(modelItem => item.ToEmployeeInfo.EmployeeName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.ToEmployeeInfo.Id)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FromEmployeeInfo.Id)
+                                        @Html.DisplayFor(modelItem => item.FromEmployeeInfo.EmployeeName)
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x btn btn-outline-primary">Edit</a> |

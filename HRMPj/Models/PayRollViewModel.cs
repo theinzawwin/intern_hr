@@ -21,10 +21,9 @@ namespace HRMPj.Models
         public decimal NetPay { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public int Year { get; set; }
-        public int Month { get; set; }
-        public string PrintStatus { get; set; }
-        public string Claim { get; set; }
+        public string Year { get; set; }
+        public string Month { get; set; }
+        public Boolean PrintStatus { get; set; }
 
       
         public long EmployeeInfoId { get; set; }

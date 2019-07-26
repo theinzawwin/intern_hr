@@ -60,8 +60,8 @@ namespace HRMPj.Controllers
         // GET: Bonuses/Create
         public IActionResult Create()
         {
-            ViewData["BonusTypeId"] = new SelectList(bonusTypeRepository.GetBonusTypeList(), "Id", "Id");
-            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
+            ViewData["BonusTypeId"] = new SelectList(bonusTypeRepository.GetBonusTypeList(), "Id", "TypeName");
+            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "EmployeeName");
             return View();
         }
 

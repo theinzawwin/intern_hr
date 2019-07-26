@@ -11,11 +11,11 @@ namespace HRMPj.Models
         public DateTime ResignDate { get; set; }
         public string ResignStatus { get; set; }
         public string Comment { get; set; }
-        public long Remark { get; set; }
+        public string Remark { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ApprovedDate { get; set; }
         public string Status { get; set; }
-        public long Year { get; set; }
+        public string Year { get; set; }
     
         public long EmployeeInfoId { get; set; }
        

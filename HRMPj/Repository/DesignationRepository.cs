@@ -61,6 +61,12 @@ namespace HRMPj.Repository
             return blist;
         }
 
+        public List<Designation> GetDesignationListByDepartmentId(long departmentId)
+        {
+            List<Designation> blist = context.Designations.Where(b => b.DepartmentId == departmentId).ToList();
+            return blist;
+        }
+
         public bool GetExit(long id)
         {
             var dd = context.Designations.Any(e => e.Id == id);

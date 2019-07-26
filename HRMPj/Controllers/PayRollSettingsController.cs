@@ -36,7 +36,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: PayRollSettings/Details/5
-        public async Task<IActionResult> Details(long? id)
+        public IActionResult Details(long? id)
         {
             if (id == null)
             {
@@ -58,7 +58,7 @@ namespace HRMPj.Controllers
         // GET: PayRollSettings/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
+            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "EmployeeName");
             return View();
         }
 
@@ -151,7 +151,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: PayRollSettings/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public IActionResult Delete(long? id)
         {
             if (id == null)
             {

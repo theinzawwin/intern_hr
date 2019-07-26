@@ -15,10 +15,14 @@ namespace HRMPj.Controllers
     {
         private readonly IEmployeeInfoRepository employeeInfoRepository;
         private readonly IAttendance attendanceRepository;
-        public AttendancesController( IEmployeeInfoRepository e,IAttendance a)
+        private readonly IBranchRepository branchRepository;
+        private readonly IDepartmentRepository departmentRepository;
+        public AttendancesController( IEmployeeInfoRepository e,IAttendance a,IBranchRepository b,IDepartmentRepository d)
         {
             this.attendanceRepository = a;
             this.employeeInfoRepository = e;
+            this.branchRepository = b;
+            this.departmentRepository = d;
         }
         //private readonly ApplicationDbContext _context;
 
@@ -31,7 +35,7 @@ namespace HRMPj.Controllers
         public IActionResult Index()
         {
           //  var applicationDbContext = _context.Attendance.Include(a => a.EmployeeInfo);
-            return View(attendanceRepository.GetAttendanceList());
+            return View(attendanceRepository.GetDetail());
         }
 
         // GET: Attendances/Details/5
@@ -57,7 +61,10 @@ namespace HRMPj.Controllers
         // GET: Attendances/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
+            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "BranchName");
+            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Id");
+            List<EmployeeInfo> searchEmployee = new List<EmployeeInfo>();
+            ViewData["Employee"] = new SelectList(searchEmployee);
             return View();
         }
 
@@ -66,21 +73,17 @@ namespace HRMPj.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AttendanceDate,InTime,OutTime,CreatedDate,CreatedBy,EarlyInTime,EarlyOutTime,LateInTime,LateOutTime,EmployeeInfoId")] AttendanceViewModel attendance)
+        public async Task<IActionResult> Create([Bind("Id,AttendanceDate,CreatedDate,CreatedBy,Status,EmployeeInfoId")] AttendanceViewModel attendance)
         {
             if (ModelState.IsValid)
             {
                 Attendance at = new Attendance()
                 {
                     AttendanceDate = attendance.AttendanceDate,
-                    InTime = attendance.InTime,
-                    OutTime = attendance.OutTime,
+                    Status = attendance.Status,
                     CreatedBy = attendance.CreatedBy,
-                    CreatedDate = attendance.CreatedDate,
-                    EarlyInTime = attendance.EarlyInTime,
-                    EarlyOutTime = attendance.EarlyOutTime,
-                    LateInTime = attendance.LateInTime,
-                    LateOutTime = attendance.LateOutTime,
+                    CreatedDate = DateTime.Now,
+                    
                     EmployeeInfoId = attendance.EmployeeInfoId
                 };
                 await attendanceRepository.Save(at);
@@ -89,8 +92,67 @@ namespace HRMPj.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id", attendance.EmployeeInfoId);
+            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "BranchName");
+            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Id");
+
             return View(attendance);
         }
+
+        [HttpGet]
+        public IActionResult SearchEmployeeForAttendance()
+        {
+
+            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "BranchName");
+            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Id");
+            List<EmployeeInfo> searchEmployee = new List<EmployeeInfo>();
+            ViewBag.Employee = searchEmployee;
+            return View();
+        }
+
+
+
+
+        
+       
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SearchEmployeeForAttendance(SearchViewModel search)
+        {
+           
+            List<EmployeeInfo> searchEmployee = employeeInfoRepository.GetEmployeeListByBranchAndDepartmentId(search.BranchId, search.DepartmentId);
+            ViewBag.Employee = searchEmployee;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveAttendance(List<EmployeeAttendanceViewModel> emp)
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                foreach (var item in emp)
+                {
+                    Attendance atten = new Attendance()
+                    {
+                        Status = item.Status,
+                        AttendanceDate = DateTime.Now,
+                        EmployeeInfoId = item.EmployeeId,
+                        CreatedDate = DateTime.Now,
+                        CreatedBy=""
+                    };
+                    await attendanceRepository.Save(atten);
+                };
+
+                return RedirectToAction(nameof(Index));
+            };
+            return View(emp);
+            
+        }
+
+
 
         // GET: Attendances/Edit/5
         public IActionResult Edit(long? id)

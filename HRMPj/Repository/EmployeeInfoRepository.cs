@@ -67,6 +67,12 @@ namespace HRMPj.Repository
             return bb;
         }
 
+        public List<EmployeeInfo> GetEmployeeListByBranchAndDepartmentId(long branchId, long departmentId)
+        {
+            List<EmployeeInfo> blist = context.EmployeeInfos.Include(d => d.Designation).Where(b => b.BranchId == branchId && b.DepartmentId == departmentId).ToList();
+            return blist;
+        }
+
         public bool GetExit(long id)
         {
             var dd = context.EmployeeInfos.Any(e => e.Id == id);

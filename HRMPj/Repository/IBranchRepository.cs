@@ -16,5 +16,6 @@ namespace HRMPj.Repository
         Branch GetDelete(long id);
         Task Delete(Branch sa);
         bool GetExit(long id);
+        
     }
 }

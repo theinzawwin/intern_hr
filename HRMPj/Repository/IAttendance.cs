@@ -17,5 +17,6 @@ namespace HRMPj.Repository
         List<Attendance> GetDelete();
         Attendance GetDeleteList(long id);
         bool GetExit(long id);
+        
     }
 }

@@ -57,7 +57,7 @@ namespace HRMPj.Controllers
         // GET: Departments/Create
         public IActionResult Create()
         {
-            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "Id");
+            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "BranchName");
             return View();
         }
 
@@ -85,7 +85,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: Departments/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public IActionResult Edit(long? id)
         {
             if (id == null)
             {
@@ -140,7 +140,7 @@ namespace HRMPj.Controllers
         }
 
         //// GET: Departments/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public IActionResult Delete(long? id)
         {
             if (id == null)
             {

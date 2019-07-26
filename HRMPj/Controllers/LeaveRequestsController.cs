@@ -57,7 +57,7 @@ namespace HRMPj.Controllers
         // GET: LeaveRequests/Create
         public IActionResult Create()
         {
-            ViewData["LeaveTypeId"] = new SelectList(leaveTypeRepository.GetLeaveTypeList(), "Id", "Id");
+            ViewData["LeaveTypeId"] = new SelectList(leaveTypeRepository.GetLeaveTypeList(), "Id", "TypeName");
             return View();
         }
 
@@ -148,7 +148,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: LeaveRequests/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public IActionResult Delete(long? id)
         {
             if (id == null)
             {

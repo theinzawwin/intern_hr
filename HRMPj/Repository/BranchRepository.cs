@@ -62,6 +62,8 @@ namespace HRMPj.Repository
             }
         }
 
+    
+
         public bool GetExit(long id)
         {
             var dd = context.Branches.Any(e => e.Id == id);

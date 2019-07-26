@@ -78,6 +78,7 @@ namespace HRMPj.Data
         public DbSet<Resign> Resigns { get; set; }
         public DbSet<PayRoll> PayRolls { get; set; }
         public DbSet<PayRollSetting> PayRollSettings { get; set; }
+        public DbSet<HRMPj.Models.SearchViewModel> SearchViewModel { get; set; }
      
     }
 }

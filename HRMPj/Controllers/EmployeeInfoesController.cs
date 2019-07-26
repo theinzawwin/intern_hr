@@ -10,6 +10,7 @@ using HRMPj.Models;
 using HRMPj.Repository;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace HRMPj.Controllers
 {
@@ -39,7 +40,28 @@ namespace HRMPj.Controllers
            // var applicationDbContext = _conext.EcontmployeeInfos.Include(e => e.Branch).Include(e => e.Department).Include(e => e.Designation);
             return View(employeeInfoRepository.GetDetail());
         }
+        [HttpGet]
+        public IActionResult GetDepartmentList(long BranchId)
+        {
 
+            List<Department> departmentList = departmentRepository.GetDepartmentListByBranchs(BranchId);
+            var d = JsonConvert.SerializeObject(departmentList, Formatting.None, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
+            return Content(d, "application/json");
+        }
+        [HttpGet]
+        public IActionResult GetDesignationList(long DepartmentId)
+        {
+
+            List<Designation> designationlist = designationRepository.GetDesignationListByDepartmentId(DepartmentId);
+            var d = JsonConvert.SerializeObject(designationlist, Formatting.None, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
+            return Content(d, "application/json");
+        }
         // GET: EmployeeInfoes/Details/5
         //public async Task<IActionResult> Details(long? id)
         //{
@@ -64,9 +86,9 @@ namespace HRMPj.Controllers
         // GET: EmployeeInfoes/Create
         public IActionResult Create()
         {
-            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "Id");
-            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Id");
-            ViewData["DesignationId"] = new SelectList(designationRepository.GetDesignationList(), "Id", "Id");
+            ViewData["BranchId"] = new SelectList(branchRepository.GetBranchList(), "Id", "BranchName");
+            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Name");
+            ViewData["DesignationId"] = new SelectList(designationRepository.GetDesignationList(), "Id", "Name");
             return View();
         }
 
@@ -200,7 +222,7 @@ namespace HRMPj.Controllers
         }
 
         //// GET: EmployeeInfoes/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public IActionResult Delete(long? id)
         {
             if (id == null)
             {

@@ -24,7 +24,7 @@
 </div>
 
 <p>
-    <a asp-action="Create" class="mb-2 mr-2 btn-icon btn-pill btn btn-primary">Create New</a>
+    <a asp-action="SearchEmployeeForAttendance" class="mb-2 mr-2 btn-icon btn-pill btn btn-primary">Create New</a>
 </p>
 <div class="main-card mb-3 card">
     <div class="card-body">
@@ -39,29 +39,16 @@
                                     @Html.DisplayNameFor(model => model.AttendanceDate)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.InTime)
+                                    @Html.DisplayNameFor(model => model.Status)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.OutTime)
-                                </th>
+                               
                                 <th>
                                     @Html.DisplayNameFor(model => model.CreatedDate)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.CreatedBy)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.EarlyInTime)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.EarlyOutTime)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.LateInTime)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.LateOutTime)
-                                </th>
+                           
                                 <th>
                                     @Html.DisplayNameFor(model => model.EmployeeInfo)
                                 </th>
@@ -76,31 +63,18 @@
                                         @Html.DisplayFor(modelItem => item.AttendanceDate)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.InTime)
+                                        @Html.DisplayFor(modelItem => item.Status)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.OutTime)
-                                    </td>
+                                   
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CreatedDate)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CreatedBy)
                                     </td>
+                                 
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.EarlyInTime)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.EarlyOutTime)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LateInTime)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LateOutTime)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.EmployeeInfo.Id)
+                                        @Html.DisplayFor(modelItem => item.EmployeeInfo.EmployeeName)
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x btn btn-outline-primary">Edit</a> |

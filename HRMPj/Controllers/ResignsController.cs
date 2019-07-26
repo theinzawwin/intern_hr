@@ -58,7 +58,7 @@ namespace HRMPj.Controllers
         // GET: Resigns/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
+            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "EmployeeName");
             return View();
         }
 

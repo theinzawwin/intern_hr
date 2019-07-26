@@ -37,7 +37,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: AllowanceDetails/Details/5
-        public async Task<IActionResult> Details(long? id)
+        public IActionResult Details(long? id)
         {
             if (id == null)
             {
@@ -60,8 +60,8 @@ namespace HRMPj.Controllers
         // GET: AllowanceDetails/Create
         public IActionResult Create()
         {
-            ViewData["AllowanceTypeId"] = new SelectList(allowanceRepository.GetAllowanceList(), "Id", "Id");
-            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
+            ViewData["AllowanceTypeId"] = new SelectList(allowanceRepository.GetAllowanceList(), "Id", "Name");
+            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "EmployeeName");
             return View();
         }
 
@@ -149,7 +149,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: AllowanceDetails/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public IActionResult Delete(long? id)
         {
             if (id == null)
             {

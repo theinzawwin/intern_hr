@@ -13,22 +13,31 @@ namespace HRMPj.Models
         [Key]
         public long Id { get; set; }
         public DateTime PaymentDate { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal BasicSalary { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal OTFee { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal TotalAllowence { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Bonus { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal LoanAmount { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal LateDebuct { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal PenaltyFee { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal TaxFee { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Saving { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal NetPay { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public int Year { get; set; }
-        public int Month { get; set; }
-        public string PrintStatus { get; set; }
-        public string Claim { get; set; }
+        public string Year { get; set; }
+        public string Month { get; set; }
+        public Boolean PrintStatus { get; set; }
         
         [ForeignKey("EmployeeInfoId")]
         public long EmployeeInfoId { get; set; }

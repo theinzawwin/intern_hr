@@ -15,12 +15,15 @@ namespace HRMPj.Models
         public Boolean OT { get; set; }
         public Boolean Bonus { get; set; }
         public Boolean LateDebuct { get; set; }
-        public float Tax { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal Tax { get; set; }
         public Boolean Allowance { get; set; }
         public Boolean Saving { get; set; }
         public Boolean Claim { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal BasicSalary { get; set; }
         public Boolean Loan { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal SavingPerMonth { get; set; }
         [ForeignKey("EmployeeInfoId")]
         public long EmployeeInfoId { get; set; }

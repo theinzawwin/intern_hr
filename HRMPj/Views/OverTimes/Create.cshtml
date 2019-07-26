@@ -4,6 +4,18 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script>
+
+    $(function () {
+
+        $("#datepicker").datepicker({
+            altField: "#alternate",
+            altFormat: "DD, d MM, yy"
+        });
+    });
+
+</script>
 <hr />
 <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -38,25 +50,24 @@
     <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                <h5 class="card-title">Create</h5>
                 <form asp-action="Create" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="position-relative form-group">
-                        <label asp-for="OTDate" class="">OTDate</label>
-                        <input asp-for="OTDate" id="OTDate" placeholder="Enter date" type="text" class="form-control" />
+                        <label asp-for="OTDate" class="">OT Date</label>
+                        <input asp-for="OTDate" id="datepicker" placeholder="Enter date" type="date" class="form-control" />
                         <span asp-validation-for="OTDate" class="text-danger"></span>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="position-relative form-group">
-                                <label asp-for="OTStartTime" class="">OTStartTime</label>
+                                <label asp-for="OTStartTime" class="">OT Start Time</label>
                                 <input asp-for="OTStartTime" id="OTStartTime" placeholder="Enter time" type="text" class="form-control" />
                                 <span asp-validation-for="OTStartTime" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="position-relative form-group">
-                                <label asp-for="OTEndTime" class="">OTEndTime</label>
+                                <label asp-for="OTEndTime" class="">OT End Time</label>
                                 <input asp-for="OTEndTime" id="OTEndTime" placeholder="Enter time" type="text" class="form-control" />
                                 <span asp-validation-for="OTEndTime" class="text-danger"></span>
                             </div>
@@ -64,24 +75,25 @@
                     </div>
                     <div class="position-relative form-group">
                         <label asp-for="Status" class="">Status</label>
-                        <textarea asp-for="Status" id="Status" placeholder="Enter status" type="text" class="form-control" ></textarea>
+                        <textarea asp-for="Status" id="Status" placeholder="Enter status" type="text" class="form-control"></textarea>
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
+                    @*<div class="position-relative form-group">
+                            <label asp-for="ApprovedDate" class="">ApprovedDate</label>
+                            <input asp-for="ApprovedDate" id="ApprovedDate" placeholder="Enter date" type="text" class="form-control" />
+                            <span asp-validation-for="ApprovedDate" class="text-danger"></span>
+                        </div>*@
                     <div class="position-relative form-group">
-                        <label asp-for="ApprovedDate" class="">ApprovedDate</label>
-                        <input asp-for="ApprovedDate" id="ApprovedDate" placeholder="Enter date" type="text" class="form-control" />
-                        <span asp-validation-for="ApprovedDate" class="text-danger"></span>
-                    </div>
-                    <div class="position-relative form-group">
-                        <label asp-for="OTTime" class="">OTTime</label>
+                        <label asp-for="OTTime" class="">OT Time(Min)</label>
                         <input asp-for="OTTime" id="OTTime" placeholder="Enter time" type="text" class="form-control" />
                         <span asp-validation-for="OTTime" class="text-danger"></span>
                     </div>
                     <div class="position-relative form-group">
                         <label asp-for="Year" class="">Year</label>
-                        <input asp-for="Year" id="Year" placeholder="Enter year" type="text" class="form-control" />
+                        <input asp-for="Year" id="Year" placeholder="Year" type="text" class="form-control" />
                         <span asp-validation-for="Year" class="text-danger"></span>
                     </div>
+
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="position-relative form-group">
@@ -108,6 +120,53 @@
 
       >
 
-        @section Scripts {
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#OTStartTime,#OTEndTime').on('change', function () {
+
+                var start_time = $('#OTStartTime').val();
+                var end_time = $('#OTEndTime').val();
+                alert("s = " + start_time + "e = " + end_time);
+                if (start_time != "" && end_time != "") {
+                    alert("Calculate");
+                    var start = start_time;
+                    var end = end_time;
+                    s = start.split(':');
+                    e = end.split(':');
+                    min = e[1] - s[1];
+                    hour_carry = 0;
+                    if (min < 0) {
+                        min += 60;
+                        hour_carry += 1;
+                    }
+                    hour = e[0] - s[0] - hour_carry;
+                    min += hour * 60;
+                    //min = ((min / 60)*100).toString();
+                    //diff = hour + ":" + min;
+                    diff = min;
+                    //var hrs = end.getHours() - start.getHours();
+                    //var min = end.getMinutes() - start.getMinutes();
+                    
+
+                    //var hour_carry = 0;
+                    //var minutes_carry = 0;
+                    //if (min < 0) {
+                    //    min += 60;
+                    //    hour_carry += 1;
+                    //}
+                    //hrs = hrs - hour_carry;
+                    
+
+
+
+                    $('#OTTime').val(diff);
+                }
+                else {
+                    $('#OTTime').val("");
+                }
+            });
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

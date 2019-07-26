@@ -62,6 +62,14 @@ namespace HRMPj.Repository
             return blist;
         }
 
+      
+
+        public List<Department> GetDepartmentListByBranchs(long branchId)
+        {
+            List<Department> blist = context.Departments.Where(b => b.BranchId == branchId).ToList();
+            return blist;
+        }
+
         public bool GetExit(long id)
         {
             var dd = context.Departments.Any(e => e.Id == id);

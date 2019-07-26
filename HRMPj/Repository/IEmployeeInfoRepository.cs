@@ -17,6 +17,7 @@ namespace HRMPj.Repository
         List<EmployeeInfo> GetDelete();
         EmployeeInfo GetDeleteList(long id);
         bool GetExit(long id);
+        List<EmployeeInfo> GetEmployeeListByBranchAndDepartmentId(long branchId,long departmentId);
 
     }
 }

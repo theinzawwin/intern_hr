@@ -38,7 +38,6 @@
     <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                <h5 class="card-title">Create</h5>
                 <form asp-action="Create" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-row">
@@ -58,7 +57,7 @@
                     <div class="position-relative form-group">
                         <label asp-for="Gender" class="">Gender</label><br />
                         @*<input type="radio" asp-for="Gender" value="Male" />Male
-            <input type="radio" asp-for="Gender" value="Female" />Female*@
+                            <input type="radio" asp-for="Gender" value="Female" />Female*@
                         <select asp-for="Gender" class="form-control">
 
                             <option>Male</option>
@@ -159,19 +158,25 @@
                         <div class="col-md-4">
                             <div class="position-relative form-group">
                                 <label asp-for="BranchId" class="">BranchId</label>
-                                <select asp-for="BranchId" id="BranchId" class="form-control" asp-items="ViewBag.BranchId"></select>
+                                <select asp-for="BranchId" id="BranchId" class="form-control" asp-items="ViewBag.BranchId">
+                                    <option>--Select--</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="position-relative form-group">
                                 <label asp-for="DepartmentId" class="">DepartmentId</label>
-                                <select asp-for="DepartmentId" id="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                                <select asp-for="DepartmentId" id="DepartmentId" class="form-control">
+                                    <option>--Select--</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="position-relative form-group">
                                 <label asp-for="DesignationId" class="">DesignationId</label>
-                                <select asp-for="DesignationId" id="DesignationId" class="form-control" asp-items="ViewBag.DesignationId"></select>
+                                <select asp-for="DesignationId" id="DesignationId" class="form-control" >
+                                    <option>--Select--</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -193,8 +198,80 @@
     </div>
 </div>
 
-     
 
-        @section Scripts {
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#BranchId").on("change", function () {
+
+                var param = this.value;
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    type: "GET",
+                    url: '/EmployeeInfoes/GetDepartmentList?BranchId=' + param,
+
+                    success: function (data) {
+
+                        var html = '<option>--Select--</option>';
+                        var len = data.length;
+                        if (len == 0) {
+                            alert("error");
+                        }
+                        else {
+                            for (var i = 0; i < len; i++) {
+                                html += '<option value="' + data[i].Id + '">'
+                                    + data[i].Name
+                                    + '</option>';
+                            }
+                            $('#DepartmentId').html(html);
+                            if (typeof (callback) == "function") {
+                                callback();
+                            }
+                        }
+
+                    },
+                    complete: function () {
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#DepartmentId").on("change", function () {
+
+                var param = this.value;
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    type: "GET",
+                    url: '/EmployeeInfoes/GetDesignationList?DepartmentId=' + param,
+
+                    success: function (data) {
+
+                        var html = '<option>--Select--</option>';
+                        var len = data.length;
+                        if (len == 0) {
+                            alert("error");
+                        }
+                        else {
+                            for (var i = 0; i < len; i++) {
+                                html += '<option value="' + data[i].Id + '">'
+                                    + data[i].Name
+                                    + '</option>';
+                            }
+                            $('#DesignationId').html(html);
+                            if (typeof (callback) == "function") {
+                                callback();
+                            }
+                        }
+
+                    },
+                    complete: function () {
+                    }
+                });
+            });
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

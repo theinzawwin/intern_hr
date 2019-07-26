@@ -94,7 +94,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="SearchId">
                             @foreach (var item in Model)
                             {
                                 <tr>
@@ -147,13 +147,13 @@
                                         @Html.DisplayFor(modelItem => item.EmployeeProfile)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Branch.Id)
+                                        @Html.DisplayFor(modelItem => item.Branch.BranchName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Department.Id)
+                                        @Html.DisplayFor(modelItem => item.Department.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Designation.Id)
+                                        @Html.DisplayFor(modelItem => item.Designation.Name)
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="mb-2 mr-2 btn-icon btn-shadow btn-outline-2x btn btn-outline-primary">Edit</a>
@@ -170,3 +170,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#btn").click(function () {
+
+        })
+    })
+</script>

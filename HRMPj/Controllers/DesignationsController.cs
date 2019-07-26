@@ -57,7 +57,7 @@ namespace HRMPj.Controllers
         // GET: Designations/Create
         public IActionResult Create()
         {
-            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Id");
+            ViewData["DepartmentId"] = new SelectList(departmentRepository.GetDepartmentList(), "Id", "Name");
             return View();
         }
 

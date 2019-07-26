@@ -8,17 +8,22 @@ using Microsoft.EntityFrameworkCore;
 using HRMPj.Data;
 using HRMPj.Models;
 using HRMPj.Repository;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
+using Newtonsoft.Json;
 
 namespace HRMPj.Controllers
 {
+   
     public class BranchesController : Controller
     {
         private readonly IBranchRepository branchRepository;
         private readonly ICompanyRepository companyRepository;
-        public BranchesController(IBranchRepository b,ICompanyRepository c)
+        private readonly IDepartmentRepository departmentRepository;
+        public BranchesController(IBranchRepository b,ICompanyRepository c,IDepartmentRepository d)
         {
             this.branchRepository = b;
             this.companyRepository = c;
+            this.departmentRepository = d;
         }
         //private readonly ApplicationDbContext _context;
 
@@ -53,11 +58,20 @@ namespace HRMPj.Controllers
 
             return View(branch);
         }
+        [HttpGet]
+        public IActionResult GetDepartmentList(long BranchId)
+        {
 
+            List<Department> departmentList = departmentRepository.GetDepartmentListByBranchs(BranchId);
+            var d= JsonConvert.SerializeObject(departmentList,Formatting.None,new JsonSerializerSettings() {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
+            return Content(d,"application/json");
+        }
         // GET: Branches/Create
         public async Task<IActionResult> Create()
         {
-            ViewData["CompanyId"] = new SelectList(await companyRepository.GetCompanyListc(), "Id", "Id");
+            ViewData["CompanyId"] = new SelectList(await companyRepository.GetCompanyListc(), "Id", "CompanyName");
             return View();
         }
 

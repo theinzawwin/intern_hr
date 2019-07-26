@@ -136,7 +136,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: BonusTypes/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public IActionResult Delete(long? id)
         {
             if (id == null)
             {

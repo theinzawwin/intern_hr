@@ -42,7 +42,7 @@ namespace HRMPj.Repository
 
         public async Task<List<AllowanceTypeViewModel>> GetAllowanceViewModelList()
         {
-            var comList = await(from c in context.AllowanceTypes select new AllowanceTypeViewModel() { Id = c.Id, Name = c.Name,AmmountPerDay = c.AmmountPerDay,Status = c.Status,Year = c.Year, CreatedDate = c.CreatedDate,CreatedBy = c.CreatedBy, }).ToAsyncEnumerable<AllowanceTypeViewModel>().ToList();
+            var comList = await(from c in context.AllowanceTypes select new AllowanceTypeViewModel() { Id = c.Id, Name = c.Name,AmmountPerDay = c.AmmountPerDay,Status = c.Status, CreatedDate = c.CreatedDate,CreatedBy = c.CreatedBy, }).ToAsyncEnumerable<AllowanceTypeViewModel>().ToList();
             return comList;
         }
 

@@ -16,5 +16,6 @@ namespace HRMPj.Repository
         Designation GetDelete(long id);
         Task Delete(Designation sa);
         bool GetExit(long id);
+        List<Designation> GetDesignationListByDepartmentId(long departmentId);
     }
 }

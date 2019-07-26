@@ -10,6 +10,7 @@ namespace HRMPj.Repository
     {
         Task Save(Department b);
         List<Department> GetDepartmentListByBranch();
+        List<Department> GetDepartmentListByBranchs(long branchId);
         List<Department> GetDepartmentList();
         Department GetDepartment(long? Id);
         Task Update(Department s);

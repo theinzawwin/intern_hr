@@ -58,7 +58,7 @@ namespace HRMPj.Controllers
         // GET: PayRolls/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
+            ViewData["EmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "EmployeeName");
             return View();
         }
 
@@ -87,7 +87,7 @@ namespace HRMPj.Controllers
                     Month = payRoll.Month,
                     Saving = payRoll.Saving,
                     PrintStatus = payRoll.PrintStatus,
-                    Claim = payRoll.Claim,
+                  
                     CreatedBy = payRoll.CreatedBy,
                     CreatedDate = payRoll.CreatedDate,
                     EmployeeInfoId = payRoll.EmployeeInfoId

@@ -13,14 +13,9 @@ namespace HRMPj.Models
         [Key]
         public long Id { get; set; }
         public DateTime AttendanceDate { get; set; }
-        public DateTime InTime { get; set; }
-        public DateTime OutTime { get; set; }
+        public string Status { get; set; }
         public DateTime CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime EarlyInTime { get; set; }
-        public DateTime EarlyOutTime { get; set; }
-        public DateTime LateInTime { get; set; }
-        public DateTime LateOutTime { get; set; }
+        public string CreatedBy { get; set; }   
         [ForeignKey("EmployeeInfoId")]
         public long EmployeeInfoId { get; set; }
         public virtual EmployeeInfo EmployeeInfo { get; set; }

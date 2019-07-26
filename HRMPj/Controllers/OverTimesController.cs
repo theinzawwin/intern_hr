@@ -58,8 +58,8 @@ namespace HRMPj.Controllers
         // GET: OverTimes/Create
         public IActionResult Create()
         {
-            ViewData["FromEmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
-            ViewData["ToEmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "Id");
+            ViewData["FromEmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "EmployeeName");
+            ViewData["ToEmployeeInfoId"] = new SelectList(employeeInfoRepository.GetEmployeeInfoList(), "Id", "EmployeeName");
             return View();
         }
 
@@ -80,7 +80,7 @@ namespace HRMPj.Controllers
                     Status = overTime.Status,
                     ApprovedDate = overTime.ApprovedDate,
                     OTTime = overTime.OTTime,
-                    Year = overTime.Year,
+                    Year=overTime.Year,
                     FromEmployeeInfoId = overTime.FromEmployeeInfoId,
                     ToEmployeeInfoId = overTime.ToEmployeeInfoId
                 };

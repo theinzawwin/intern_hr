@@ -58,8 +58,6 @@ namespace HRMPj.Migrations
 
                     b.Property<string>("Status");
 
-                    b.Property<int>("Year");
-
                     b.HasKey("Id");
 
                     b.ToTable("AllowancdType");
@@ -130,19 +128,9 @@ namespace HRMPj.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<DateTime>("EarlyInTime");
-
-                    b.Property<DateTime>("EarlyOutTime");
-
                     b.Property<long>("EmployeeInfoId");
 
-                    b.Property<DateTime>("InTime");
-
-                    b.Property<DateTime>("LateInTime");
-
-                    b.Property<DateTime>("LateOutTime");
-
-                    b.Property<DateTime>("OutTime");
+                    b.Property<string>("Status");
 
                     b.HasKey("Id");
 
@@ -184,7 +172,7 @@ namespace HRMPj.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Amount");
+                    b.Property<long>("Amount");
 
                     b.Property<string>("CreatedBy");
 
@@ -194,7 +182,7 @@ namespace HRMPj.Migrations
 
                     b.Property<string>("TypeName");
 
-                    b.Property<DateTime>("Year");
+                    b.Property<string>("Year");
 
                     b.HasKey("Id");
 
@@ -302,9 +290,9 @@ namespace HRMPj.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ATMNumber");
+                    b.Property<long>("ATMNumber");
 
-                    b.Property<int>("AccountNo");
+                    b.Property<long>("AccountNo");
 
                     b.Property<long>("BranchId");
 
@@ -320,7 +308,7 @@ namespace HRMPj.Migrations
 
                     b.Property<long>("DesignationId");
 
-                    b.Property<int>("EmergencyNo");
+                    b.Property<long>("EmergencyNo");
 
                     b.Property<string>("EmployeeName");
 
@@ -334,7 +322,7 @@ namespace HRMPj.Migrations
 
                     b.Property<string>("MartialStatus");
 
-                    b.Property<int>("MobilePhone");
+                    b.Property<long>("MobilePhone");
 
                     b.Property<string>("NRC");
 
@@ -500,7 +488,7 @@ namespace HRMPj.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<decimal>("Hour");
+                    b.Property<int>("Hour");
 
                     b.Property<string>("Remark");
 
@@ -515,11 +503,11 @@ namespace HRMPj.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("BasicSalary");
+                    b.Property<decimal>("BasicSalary")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<decimal>("Bonus");
-
-                    b.Property<string>("Claim");
+                    b.Property<decimal>("Bonus")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("CreatedBy");
 
@@ -527,29 +515,37 @@ namespace HRMPj.Migrations
 
                     b.Property<long>("EmployeeInfoId");
 
-                    b.Property<decimal>("LateDebuct");
+                    b.Property<decimal>("LateDebuct")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<decimal>("LoanAmount");
+                    b.Property<decimal>("LoanAmount")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<int>("Month");
+                    b.Property<string>("Month");
 
-                    b.Property<decimal>("NetPay");
+                    b.Property<decimal>("NetPay")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<decimal>("OTFee");
+                    b.Property<decimal>("OTFee")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("PaymentDate");
 
-                    b.Property<decimal>("PenaltyFee");
+                    b.Property<decimal>("PenaltyFee")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("PrintStatus");
+                    b.Property<bool>("PrintStatus");
 
-                    b.Property<decimal>("Saving");
+                    b.Property<decimal>("Saving")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<decimal>("TaxFee");
+                    b.Property<decimal>("TaxFee")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<decimal>("TotalAllowence");
+                    b.Property<decimal>("TotalAllowence")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<int>("Year");
+                    b.Property<string>("Year");
 
                     b.HasKey("Id");
 
@@ -566,7 +562,8 @@ namespace HRMPj.Migrations
 
                     b.Property<bool>("Allowance");
 
-                    b.Property<decimal>("BasicSalary");
+                    b.Property<decimal>("BasicSalary")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<bool>("Bonus");
 
@@ -582,9 +579,11 @@ namespace HRMPj.Migrations
 
                     b.Property<bool>("Saving");
 
-                    b.Property<decimal>("SavingPerMonth");
+                    b.Property<decimal>("SavingPerMonth")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<float>("Tax");
+                    b.Property<decimal>("Tax")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 
@@ -607,7 +606,7 @@ namespace HRMPj.Migrations
 
                     b.Property<long>("EmployeeInfoId");
 
-                    b.Property<long>("Remark");
+                    b.Property<string>("Remark");
 
                     b.Property<DateTime>("ResignDate");
 
@@ -615,7 +614,7 @@ namespace HRMPj.Migrations
 
                     b.Property<string>("Status");
 
-                    b.Property<long>("Year");
+                    b.Property<string>("Year");
 
                     b.HasKey("Id");
 

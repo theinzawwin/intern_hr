@@ -61,18 +61,18 @@ namespace HRMPj.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,AmmountPerDay,Status,Year,CreatedBy,CreatedDate")] AllowanceTypeViewModel allowanceTypes)
+        public async Task<IActionResult> Create([Bind("Id,Name,AmmountPerDay,Status,CreatedBy,CreatedDate")] AllowanceTypeViewModel allowanceTypes)
         {
             if (ModelState.IsValid)
             {
                 AllowanceType alt = new AllowanceType()
                 {
-                    Name=allowanceTypes.Name,
-                    AmmountPerDay=allowanceTypes.AmmountPerDay,
-                    Status=allowanceTypes.Status,
-                    Year=allowanceTypes.Year,
-                    CreatedBy=allowanceTypes.CreatedBy,
-                    CreatedDate=allowanceTypes.CreatedDate
+                    Name = allowanceTypes.Name,
+                    AmmountPerDay = allowanceTypes.AmmountPerDay,
+                    Status = allowanceTypes.Status,
+
+                    CreatedBy = allowanceTypes.CreatedBy,
+                    CreatedDate = DateTime.Now
                 };
                 await allowanceType.Save(alt);
                 //_context.Add(allowanceType);
@@ -104,7 +104,7 @@ namespace HRMPj.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Name,AmmountPerDay,Status,Year,CreatedBy,CreatedDate")] AllowanceType allowanceTypes)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,Name,AmmountPerDay,Status,CreatedBy,CreatedDate")] AllowanceType allowanceTypes)
         {
             if (id != allowanceTypes.Id)
             {
@@ -136,7 +136,7 @@ namespace HRMPj.Controllers
         }
 
         // GET: AllowanceTypes/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public IActionResult Delete(long? id)
         {
             if (id == null)
             {

@@ -15,7 +15,7 @@ namespace HRMPj.Models
         public DateTime ApprovedDate { get; set; }
         public int OTTime { get; set; }
         public int Year { get; set; }
-        
+
         public long FromEmployeeInfoId { get; set; }
         
         public long ToEmployeeInfoId { get; set; }

@@ -9,9 +9,9 @@ namespace HRMPj.Models
     {
         public long Id { get; set; }
         public string TypeName { get; set; }
-        public int Amount { get; set; }
+        public long Amount { get; set; }
         public Boolean IsActive { get; set; }
-        public DateTime Year { get; set; }
+        public string Year { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CreatedBy { get; set; }
     }

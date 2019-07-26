@@ -11,7 +11,7 @@ namespace HRMPj.Models
         public string Name { get; set; }
         public long AmmountPerDay { get; set; }
         public string Status { get; set; }
-        public int Year { get; set; }
+     
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
     }
